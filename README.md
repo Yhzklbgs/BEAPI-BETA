@@ -7,7 +7,15 @@ pip3 install httpx && pip3 install httpx[http2]
 ```PY
 import BEAPI
 client = BEAPI.BEAPI()
-print(client.simiSimi("id", "anjing kamu"))
+qr = client.lineGetQr("IOSIPAD\t10.5.2\tiPhone 8\t11.2.5")
+print("Link QR: "+qr["result"]["qrlink"])
+print("IP: "+qr["result"]["ip"])
+pincode = client.lineGetQrPincode(qr["result"]["session"])
+print("Pincode: "+pincode["result"]["pincode"])
+auth = client.lineGetQrAuth(qr["result"]["session"])
+print("AccessToken: "+auth["result"]["accessToken"])
+print("Cert: "+auth["result"]["certificate"])
+
 ```
 
 ## INFORMATION ##
