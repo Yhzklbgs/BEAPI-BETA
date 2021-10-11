@@ -105,8 +105,9 @@ class BEAPI():
         if resp["status"] != 200: raise Exception (resp["reason"])
         return resp
 
-    def lineGetQr(self, appName, cert):
-        params = {"appname": appName, "cert": cert}
+    def lineGetQr(self, appName, cert=None):
+        params = {"appname": appName}
+        if cert: params["cert"] = cert
         resp = self.http.get(self.host+"/lineqr",params=params).json()
         if resp["status"] != 200: raise Exception (resp["reason"])
         return resp
@@ -162,4 +163,3 @@ class BEAPI():
         resp = self.http.get(self.host+"/youtube",params=params).json()
         if resp["status"] != 200: raise Exception (resp["reason"])
         return resp   
-
