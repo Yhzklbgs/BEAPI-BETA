@@ -4,7 +4,7 @@ import httpx
 class BEAPI():
     def __init__(self):
         self.host = "https://beta.beapi.me"
-        self.version = "1.0"
+        self.version = "1.1"
         self.http = httpx.Client(http2=True,timeout=120)
         self.checkVersion()
 
