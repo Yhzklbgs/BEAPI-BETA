@@ -68,7 +68,7 @@ class BEAPI():
         if resp["status"] != 200: raise Exception (resp["reason"])
         return resp
 
-    def gogoleImgReverse(self, url):
+    def googleImgReverse(self, url):
         params = {"url": url}
         resp = self.http.get(self.host+"/imgreverse",params=params).json()
         if resp["status"] != 200: raise Exception (resp["reason"])
