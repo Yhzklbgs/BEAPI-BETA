@@ -1,4 +1,4 @@
-import httpx
+import httpx, json
 
 
 class BEAPI():
@@ -12,7 +12,10 @@ class BEAPI():
         ver = self.http.get("https://github.com/hert0t/BEAPI-BETA/raw/main/version").text.replace("\n","").replace(" ","")
         if ver != self.version:
             print("[ INFORMATION ]\nUPDATE API AVAILABLE : https://github.com/hert0t/BEAPI-BETA \nPLEASE UPDATE TO IMPROVE API FEATURE!")
-
+            
+    def pretyPrint(self, djson):
+        print(json.dumps(djson, indent=4, sort_keys=True))
+        
     def alphaCoders(self, search, page=1):
         params = {"search": search, "page": page}
         resp = self.http.get(self.host+"/alphacoders",params=params).json()
