@@ -92,6 +92,18 @@ res = api.googleImgReverse("url_img")
 api.pretyPrint(res) #for prety print result
 ```
 
+- INSTAGRAM
+```PY
+from BEAPI import BEAPI
+api = BEAPI()
+#INSTAGRAM POST
+#res = api.instaPost("https://www.instagram.com/p/CNLOThQjnzU/")
+#api.pretyPrint(res) #for prety print result
+#INSTGRAM PROFILE
+res = api.instaProfile("instagram")
+api.pretyPrint(res) #for prety print result
+```
+
 - JOOXSEARCH
 ```PY
 from BEAPI import BEAPI
