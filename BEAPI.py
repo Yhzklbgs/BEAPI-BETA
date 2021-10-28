@@ -1,10 +1,10 @@
-import httpx, json
+import httpx
 
 
 class BEAPI():
     def __init__(self):
         self.host = "https://beta.beapi.me"
-        self.version = "1.2"
+        self.version = "1.3"
         self.http = httpx.Client(http2=True,timeout=120)
         self.checkVersion()
 
@@ -12,10 +12,7 @@ class BEAPI():
         ver = self.http.get("https://github.com/hert0t/BEAPI-BETA/raw/main/version").text.replace("\n","").replace(" ","")
         if ver != self.version:
             print("[ INFORMATION ]\nUPDATE API AVAILABLE : https://github.com/hert0t/BEAPI-BETA \nPLEASE UPDATE TO IMPROVE API FEATURE!")
-            
-    def pretyPrint(self, djson):
-        print(json.dumps(djson, indent=4, sort_keys=True))
-        
+
     def alphaCoders(self, search, page=1):
         params = {"search": search, "page": page}
         resp = self.http.get(self.host+"/alphacoders",params=params).json()
@@ -68,7 +65,7 @@ class BEAPI():
         if resp["status"] != 200: raise Exception (resp["reason"])
         return resp
 
-    def googleImgReverse(self, url):
+    def gogoleImgReverse(self, url):
         params = {"url": url}
         resp = self.http.get(self.host+"/imgreverse",params=params).json()
         if resp["status"] != 200: raise Exception (resp["reason"])
@@ -76,6 +73,18 @@ class BEAPI():
 
     def googleLanguageList(self):
         resp = self.http.get(self.host+"/language").json()
+        if resp["status"] != 200: raise Exception (resp["reason"])
+        return resp
+
+    def instaPost(self, url):
+        params = {"url": url}
+        resp = self.http.get(self.host+"/igpost",params=params).json()
+        if resp["status"] != 200: raise Exception (resp["reason"])
+        return resp
+    
+    def instaProfile(self, user):
+        params = {"user": user}
+        resp = self.http.get(self.host+"/igprofile",params=params).json()
         if resp["status"] != 200: raise Exception (resp["reason"])
         return resp
 
